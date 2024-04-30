@@ -1,0 +1,64 @@
+<html>
+<head>
+<style>
+
+    body {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 25px;
+    }
+
+    h1 {
+        color: red;
+    }
+
+    table {
+    width: 70%;
+    border-collapse: collapse;
+    text-align: center;
+    border-radius: 10px;
+    }
+
+    th {
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 8px;
+    border: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+    background-color: #f9f9f9;
+    }
+
+    td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    }
+
+</style>
+</head>
+
+
+<body>
+    <h1>Weather Stats!</h1><br>
+    <form method="POST">
+        <label >Enter Location Coordinates</label><br><br>
+        <input placeholder="Latitude" name="latitude">
+        <input placeholder="Longitude" name="longitude">
+        <input type="submit">
+    </form>
+    {% if weather %}
+    <center>
+        <table>
+            <tr><td colspan="2"><img src="{{ weather.data.condition.icon }}"></img></td></tr>
+            <tr><td>Place</td><td>{{ weather.data.name}}</td></tr>
+            <tr><td>Region</td><td>{{ weather.data.region}}</td></tr>
+            <tr><td>Country</td><td>{{ weather.data.country}}</td></tr>
+            <tr><td>Condition</td><td>{{ weather.data.condition.text}}</td></tr>
+            <tr><td>Temperature</td><td>{{ weather.data.temp_c}}</td></tr>
+        </table>
+    </center>
+    {% endif %}
+    <p>You have {{ count }} Visitors.</p>
+</body>
+</html>
